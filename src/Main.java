@@ -1,11 +1,14 @@
 
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         ArrayList<Producto> productos = new ArrayList<>();
+
+        productos.add(new Producto("Café Premium", 2500.5, 10));
+        productos.add(new Producto("Té Verde", 1800.0, 15));
+        productos.add(new Producto("Yerba Orgánica", 2200.75, 8));
         Scanner sc = new Scanner(System.in);
 
         int opcion;

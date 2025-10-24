@@ -11,7 +11,8 @@ public class Main {
             System.out.println("\n--- MENÚ ---");
             System.out.println("1. Agregar producto");
             System.out.println("2. Mostrar productos");
-            System.out.println("3. Salir");
+            System.out.println("3. Buscar producto por nombre");
+            System.out.println("4. Salir");
             System.out.print("Elija una opción: ");
             opcion = sc.nextInt();
             sc.nextLine();  // limpiar buffer
@@ -42,7 +43,26 @@ public class Main {
                     }
                 }
 
-                case 3 -> System.out.println("👋 Saliendo...");
+                case 3 -> {
+                    System.out.print("Ingrese el nombre del producto a buscar: ");
+                    String nombreBuscado = sc.nextLine();
+                    boolean encontrado = false;
+
+                    for (Producto p : productos) {
+                        if (p.getNombre().equalsIgnoreCase(nombreBuscado)) {
+                            System.out.println("🔍 Producto encontrado:");
+                            System.out.println(p);
+                            encontrado = true;
+                        }
+                    }
+
+                    if (!encontrado) {
+                        System.out.println("❌ No se encontró ningún producto con ese nombre.");
+                    }
+                }
+
+
+                case 4 -> System.out.println("👋 Saliendo...");
                 default -> System.out.println("Opción inválida.");
             }
 

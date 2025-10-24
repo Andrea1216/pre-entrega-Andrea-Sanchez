@@ -1,3 +1,5 @@
+
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -12,7 +14,8 @@ public class Main {
             System.out.println("1. Agregar producto");
             System.out.println("2. Mostrar productos");
             System.out.println("3. Buscar producto por nombre");
-            System.out.println("4. Salir");
+            System.out.println("4. Eliminar producto por ID");
+            System.out.println("5. Salir");
             System.out.print("Elija una opción: ");
             opcion = sc.nextInt();
             sc.nextLine();  // limpiar buffer
@@ -61,12 +64,30 @@ public class Main {
                     }
                 }
 
+                case 4 -> {
+                    System.out.print("Ingrese el id del producto a eliminar: ");
+                    int idEliminar = sc.nextInt();
+                    boolean eliminado = false;
 
-                case 4 -> System.out.println("👋 Saliendo...");
+                    for (int i = 0; i < productos.size(); i++) {
+                        if (productos.get(i).getId() == idEliminar) {
+                            productos.remove(i);
+                            System.out.println("🗑️ Producto eliminado correctamente.");
+                            eliminado = true;
+                            break;
+                        }
+                    }
+
+                    if (!eliminado) {
+                        System.out.println("❌ No existe un producto con ese ID.");
+                    }
+                }
+
+                case 5 -> System.out.println("👋 Saliendo...");
                 default -> System.out.println("Opción inválida.");
             }
 
-        } while (opcion != 3);
+        } while (opcion != 5);
 
         sc.close();
     }
